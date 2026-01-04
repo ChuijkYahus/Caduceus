@@ -15,6 +15,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Changes
 
 - New icon by SamsTheNerd!
+- Updated zh_cn translations, by ChuijkYahus in [#4](https://github.com/object-Object/Caduceus/pull/4). 
 
 ### Fixes
 
