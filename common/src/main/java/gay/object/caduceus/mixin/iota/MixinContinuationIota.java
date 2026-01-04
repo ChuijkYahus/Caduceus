@@ -32,6 +32,6 @@ public abstract class MixinContinuationIota {
         at = @At(value = "INVOKE", target = "Ljava/lang/Math;min(II)I")
     )
     private int caduceus$stopIgnoringTheEntireSizeCalculation(int a, int b, @Local int size) {
-        return size;
+        return Math.max(size, 1);
     }
 }
