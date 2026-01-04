@@ -4,6 +4,7 @@
   (:import (at.petrak.hexcasting.api HexAPI)
            (at.petrak.hexcasting.api.casting.eval.vm FrameForEach SpellContinuation SpellContinuation$Done SpellContinuation$NotDone)
            (at.petrak.hexcasting.api.casting.iota IotaType NullIota)
+           (at.petrak.hexcasting.api.casting.mishaps MishapInvalidIota MishapOthersName)
            (at.petrak.hexcasting.common.lib.hex HexContinuationTypes HexIotaTypes)
            (dev.architectury.platform Mod Platform)
            (java.util ArrayList)))
@@ -95,6 +96,12 @@
 (defn set-mark [cont mark world]
   (when-let [frame (frame cont)]
     (set-frame-mark frame mark world)))
+
+(defn assert-valid-mark [mark reverse-idx]
+  (if (> (.size mark) 1)
+    (throw (MishapInvalidIota/ofType mark reverse-idx "continuation_mark")))
+  (when-let [true-name (MishapOthersName/getTrueNameFromDatum mark nil)]
+    (throw (MishapOthersName/new true-name))))
 
 (defn- frame-tag-type-id ^net.minecraft.resources.ResourceLocation [^net.minecraft.nbt.CompoundTag tag]
   (-> tag

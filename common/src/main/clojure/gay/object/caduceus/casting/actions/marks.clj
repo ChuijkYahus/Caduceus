@@ -3,7 +3,7 @@
             [gay.object.caduceus.utils.continuation :as continuation])
   (:import (at.petrak.hexcasting.api.casting.castables Action ConstMediaAction ConstMediaAction$DefaultImpls)
            (at.petrak.hexcasting.api.casting.eval OperationResult)
-           (at.petrak.hexcasting.api.casting.mishaps MishapInvalidIota MishapNotEnoughArgs MishapOthersName)
+           (at.petrak.hexcasting.api.casting.mishaps MishapNotEnoughArgs)
            (at.petrak.hexcasting.common.lib.hex HexEvalSounds)))
 
 (deftype OpReadLocalMark []
@@ -37,11 +37,9 @@
   (operate [_this env image cont]
     (let [stack (-> image .getStack vec)
           mark (last stack)]
-      (cond
-        (nil? mark) (throw (MishapNotEnoughArgs/new 1 0))
-        (> (.size mark) 1) (throw (MishapInvalidIota/ofType mark 0 "continuation_mark")))
-      (when-let [true-name (MishapOthersName/getTrueNameFromDatum mark nil)]
-        (throw (MishapOthersName/new true-name)))
+      (if (nil? mark)
+        (throw (MishapNotEnoughArgs/new 1 0)))
+      (continuation/assert-valid-mark mark 0)
       (continuation/set-mark cont mark (.getWorld env))
       (OperationResult/new
         (casting/copy-image

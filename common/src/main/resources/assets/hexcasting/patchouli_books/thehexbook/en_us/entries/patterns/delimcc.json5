@@ -15,6 +15,14 @@
     },
     {
       type: "hexcasting:pattern",
+      op_id: "caduceus:eval/prompt_at",
+      anchor: "caduceus:eval/prompt_at",
+      input: "[pattern] | pattern, any",
+      output: "many",
+      text: "caduceus.book.patterns.delimcc.eval/prompt_at",
+    },
+    {
+      type: "hexcasting:pattern",
       op_id: "caduceus:eval/control",
       anchor: "caduceus:eval/control",
       input: "[pattern] | pattern",
@@ -22,5 +30,13 @@
       text: "caduceus.book.patterns.delimcc.eval/control.1",
     },
     "caduceus.book.patterns.delimcc.eval/control.2",
+    {
+      type: "hexcasting:pattern",
+      op_id: "caduceus:eval/control_at",
+      anchor: "caduceus:eval/control_at",
+      input: "[pattern] | pattern, any",
+      output: "many",
+      text: "caduceus.book.patterns.delimcc.eval/control_at",
+    },
   ],
 }
