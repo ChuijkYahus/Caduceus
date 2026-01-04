@@ -4,11 +4,21 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
-## [UNRELEASED]
+## `0.2.0+1.20.1` - 2026-01-04
+
+### Additions
+
+- New patterns:
+  - Arke's Gambit II: `prompt-at`
+  - Thetis' Gambit II: `control-at`
 
 ### Changes
 
 - New icon by SamsTheNerd!
+
+### Fixes
+
+- Fixed empty continuations having a size of 0.
 
 ## `0.1.1+1.20.1` - 2025-06-30
 
